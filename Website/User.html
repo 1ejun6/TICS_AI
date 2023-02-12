@@ -1,0 +1,28 @@
+{% extends "Base.html" %}
+{% block title %}User Profile{% endblock %}
+{% block content %}
+
+<div class="container my-5 d-flex justify-content-center">
+    <div class="card w-75">
+        <div class="card-header text-center">
+            <h1 class="header">User Profile</h1>
+        </div>
+        <div class="card-body d-flex flex-column align-items-center">
+            <img src="https://via.placeholder.com/150x150?text=Profile+Picture" alt="Profile Picture"
+                class="img-thumbnail rounded-circle mb-3" style="width: 250px;">
+            <br />
+            <h3>{{user.StudentName}}</h3>
+            <br />
+            <p>Student ID: {{user.StudentID}}</p>
+            <p>Class ID: {{user.ClassID}}</p>
+        </div>
+        <div class="card-header">
+        </div>
+        <div class="card-body d-flex flex-column align-items-center">
+            <h4>Parent Information</h4>
+            <p>Name: {{user.StudentParentName}}</p>
+            <p>Contact Number: {{user.StudentParentNo}}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "Base.html" %}
+{% block title %} Camera {% endblock %}
+{% block content %}
+<!doctype html>
+<div class="container mt-5">
+  <h3 class="header text-center">Camera</h3>
+  <br />
+  <div class="d-flex justify-content-center">
+    <form action="{{url_for('classify')}}" method="POST" id="start-form">
+      <button type="submit" class="btn btn-outline-dark mx-2" id="start-button">Start</button>
+    </form>
+    <form action="#" method="POST" id="stop-form" style="display: none;">
+      <button type="submit" class="btn btn-danger mx-2" id="stop-button">Stop</button>
+    </form>
+  </div>
+  <br />
+  <div class="video-container d-flex justify-content-center" id="video-container" style="display: none;"></div>
+</div>
+<script>
+  const startForm = document.getElementById("start-form");
+  const stopForm = document.getElementById("stop-form");
+  const videoContainer = document.getElementById("video-container");
+
+  startForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    startForm.style.display = "none";
+    stopForm.style.display = "inline";
+    videoContainer.style.display = "inline";
+
+    // Create an `img` element to display the video stream
+    const videoElement = document.createElement("img");
+    videoElement.src = "{{url_for('classify')}}";
+    videoElement.classList.add("img-fluid");
+
+    // Append the video element to the video container
+    videoContainer.appendChild(videoElement);
+  });
+
+  stopForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    startForm.style.display = "inline";
+    stopForm.style.display = "none";
+    videoContainer.style.display = "none";
+
+    // Remove the video element from the video container
+    videoContainer.removeChild(videoContainer.firstChild);
+  });
+</script>
+{% endblock %}

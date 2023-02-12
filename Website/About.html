@@ -1,0 +1,100 @@
+{% extends "Base.html" %}
+{% block title %} About Tourette Syndrome {% endblock %}
+{% block content %}
+
+<div class="container mt-5">
+  <h3 class="header text-center">About Tourette Syndrome</h3>
+  <p class="subheader text-center">Understanding the condition and its effects</p>
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                What is Tourette Syndrome?
+              </button>
+            </h2>
+          </div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <p class="text">Tourette syndrome is a neurodevelopmental disorder that causes involuntary and repetitive
+                movements and sounds, known as tics. It usually starts during childhood and continues into adulthood.
+                The severity of tics varies from person to person, with some experiencing only mild symptoms while
+                others may have more severe symptoms that impact their daily lives.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                aria-expanded="false" aria-controls="collapseTwo">
+                Types of Tics
+              </button>
+            </h2>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+              <p class="text">There are two types of tics associated with Tourette syndrome: vocal tics and motor tics.
+              </p>
+              <ul class="text">
+                <li><strong>Vocal Tics:</strong></li>
+                <ul>
+                  <li>Making sounds such as clearing the throat, grunting, or shouting.</li>
+                  <li>Uttering words or phrases that may be obscene or inappropriate.</li>
+                </ul>
+                <li><strong>Motor Tics:</strong></li>
+                <ul>
+                  <li>Making facial expressions such as eye blinking or nose wrinkling.</li>
+                  <li>Making movements such as touching or gesturing.</li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+                aria-expanded="false" aria-controls="collapseThree">
+                Causes of Tourette Syndrome
+              </button>
+            </h2>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+              <p class="text">The exact cause of Tourette syndrome is not known, but it is thought to involve a
+                combination of genetic and environmental factors. Research has suggested that the disorder may result
+                from an abnormal functioning of certain brain regions, including the basal ganglia and the cortex. It is
+                also believed that imbalances in certain neurotransmitters, such as dopamine and glutamate, may play a
+                role in the development of Tourette syndrome.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingFour">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour"
+                aria-expanded="false" aria-controls="collapseFour">
+                Effects of Tourette Syndrome
+              </button>
+            </h2>
+          </div>
+          <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+            <div class="card-body">
+              <p class="text">Tourette syndrome can have significant effects on a person's life, including difficulties
+                in school, social interactions, and daily activities. In some cases, tics can be socially stigmatizing,
+                leading to bullying and social isolation. Additionally, the condition can be accompanied by other
+                related disorders, such as obsessive-compulsive disorder, attention-deficit/hyperactivity disorder, and
+                anxiety, which can further impact a person's quality of life.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "Base.html" %}
+{% block title %} Draw {% endblock %}
+{% block content %}
+<div class="container my-5">
+  <div class="main-container d-flex flex-column align-items-center">
+    <h3 class="title">Draw!</h3>
+    <div class="d-flex controls mt-2 mb-3">
+      <div class="d-flex field align-items-center">
+        <p class="control mt-3" style="padding-right: 10px;">Pen Size:</p>
+        <input type="range" min="1" max="100" value="1" class="slider" id="pen-size">
+        <span class="pen-size-value ml-3" id="pen-size-value">1</span>
+      </div>
+      <div class="d-flex field align-items-center ml-5">
+        <p class="control mt-3" style="padding-right: 10px;">Pen Color: </p>
+        <input type="color" value="#000000" class="color-picker" id="pen-color">
+        <span class="pen-color-value ml-3" id="pen-color-value" style="background-color: #000000;"></span>
+      </div>
+    </div>
+    <form id="draw" method="post">
+      <div>
+        <canvas id="canvas" width="1200" height="650" class="border"></canvas>
+      </div>
+      <div class="d-flex mt-3">
+        <input type="hidden" id="pixels" name="pixels" />
+        <input type="hidden" id="jsvar" name="jsvar" value="" />
+        <button type="submit" class="btn btn-outline-dark mr-3" id="submit_btn">Submit</button>
+        <button type="button" class="btn btn-outline-secondary" onclick="resetCanvas()">Clear</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    startCanvas();
+
+    // Update the size of the brush when the pen size slider value changes
+    $("#pen-size").change(function () {
+      let penSize = $("#pen-size").val();
+      context.lineWidth = penSize;
+      size = penSize;
+      $("#pen-size-value").text(penSize);
+    });
+
+    // Update the color of the brush when the pen color value changes
+    $("#pen-color").change(function () {
+      let penColor = $("#pen-color").val();
+      context.strokeStyle = penColor;
+      color = penColor;
+      $("#pen-color-value").css("background-color", penColor);
+    });
+  });
+
+  var form = document.getElementById("draw");
+  form.addEventListener("submit", function (event) {
+    let pixels = getPixels();
+    document.getElementById("pixels").value = pixels;
+    document.getElementById("jsvar").value = document.getElementById("canvas").toDataURL();
+  });
+</script>
+{% endblock %}
