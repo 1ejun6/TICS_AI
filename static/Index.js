@@ -78,6 +78,8 @@ function resetCanvas() {
     clickX = [];
     clickY = [];
     clickDrag = [];
+    clickColor = [];
+    clickSize = [];
     clearCanvas();
 }
 
