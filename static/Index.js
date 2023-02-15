@@ -100,6 +100,43 @@ function drawCanvas() {
     }
 }
 
+function getPixels() {
+
+    let rawPixels = context.getImageData(0, 0, 300, 300).data
+    let _pixels = []
+    let pixels = []
+
+    for (i = 0; i < rawPixels.length; i += 4) {
+        _pixels.push(rawPixels[i + 3])
+    }
+
+    for (i = 0; i < _pixels.length; i += 800) {
+        for (j = 0; j < 200; j += 4) {
+            pixels.push(_pixels[i + j])
+        }
+    }
+
+    return pixels
+}
+
+function drawAction() {
+    let pixels = getPixels()
+    document.getElementById("pixels").value = pixels
+    document.getElementById("draw").submit()
+}
+function view(data) {
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    var newImg = document.createElement("img");
+    newImg.src = data;
+    document.body.appendChild(newImg);
+}
+function view(data) {
+    var newImg = document.createElement("img");
+    newImg.src = data;
+    document.body.appendChild(newImg);
+}
+
 function changePenColor(newColor) {
     color = newColor;
     context.strokeStyle = color;

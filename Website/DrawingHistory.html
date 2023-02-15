@@ -1,0 +1,55 @@
+{% extends "Base.html" %}
+{% block title %} Drawing History {% endblock %}
+{% block content %}
+<section class="container my-5">
+    <div class="main-container d-flex flex-column align-items-center">
+        <h2 class="text-center mb-4">Drawing History</h2>
+        {% if history %}
+        <table class="table table-hover">
+            <thead class="bg-transparent text-dark">
+                <tr>
+                    <th scope="col">Drawing Date</th>
+                    <th scope="col">Drawing Time</th>
+                    <th scope="col">Drawing</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for draw in history %}
+                <tr>
+                    <td>{{ draw.DrawingDate }}</td>
+                    <td>{{ draw.DrawingTime }}</td>
+                    <td><img src="data:image/jpeg;base64,{{ draw.Drawing }}" class="img-fluid rounded draw-image"
+                            width="150" height="150"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="text-center">No history recorded.</p>
+        {% endif %}
+    </div>
+</section>
+<div class="modal fade" id="drawModal" tabindex="-1" aria-labelledby="drawModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="drawModalLabel">Drawing Image</h5>
+            </div>
+            <div class="modal-body">
+                <img src="" class="img-fluid" id="modal-image">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var drawImages = document.getElementsByClassName("draw-image");
+    Array.from(drawImages).forEach(function (image) {
+        image.addEventListener("click", function () {
+            var imageSrc = this.getAttribute("src");
+            document.getElementById("modal-image").setAttribute("src", imageSrc);
+            var drawModal = new bootstrap.Modal(document.getElementById("drawModal"));
+            drawModal.show();
+        });
+    });
+</script>
+{% endblock %}

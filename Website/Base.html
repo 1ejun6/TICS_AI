@@ -43,6 +43,16 @@
             <i class="fas fa-pen" style="padding-right: 10px;"></i> Draw
           </a>
         </li>
+        <li class="nav-item {% if request.path == " /drawinghistory" %}active{% endif %}">
+          <a class="nav-link" href="/drawinghistory">
+            <i class="fas fa-history" style="padding-right: 10px;"></i> Drawing History
+          </a>
+        </li>
+        <li class="nav-item {% if request.path == " /tichistory" %}active{% endif %}">
+          <a class="nav-link" href="/tichistory">
+            <i class="fas fa-history" style="padding-right: 10px;"></i> Tic History
+          </a>
+        </li>
         {% else %}
         <li class="nav-item {% if request.path == " /" %}active{% endif %}">
           <a class="nav-link" href="/">
@@ -58,7 +68,12 @@
             <i class="fas fa-info" style="padding-right: 10px;"></i> About
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {% if request.path == " /update" %}active{% endif %}">
+          <a class="nav-link" href="/update">
+            <i class="fas fa-person-booth" style="padding-right: 10px;"></i> Update Profile
+          </a>
+        </li>
+        <li class="nav-item {% if request.path == " /logout" %}active{% endif %}">
           <a class="nav-link" href="/logout">
             <i class="fas fa-sign-out-alt" style="padding-right: 10px;"></i> Logout
           </a>

@@ -1,0 +1,40 @@
+{% extends "Base.html" %}
+{% block title %}Update Profile{% endblock %}
+{% block content %}
+
+<div class="container mt-5">
+  <div class="card p-3">
+    <h1 class="header text-center mb-3">Update Profile</h1>
+    <form action="{{url_for('update')}}" method="POST">
+      <div class="form-group">
+        <label for="StudentName">Student Name:</label>
+        <input type="text" class="form-control" id="StudentName" name="StudentName" value="{{ user['StudentName'] }}"
+          required>
+      </div>
+      <div class="form-group">
+        <label for="StudentParentName">Parent Name:</label>
+        <input type="text" class="form-control" id="StudentParentName" name="StudentParentName"
+          value="{{ user['StudentParentName'] }}" required>
+      </div>
+      <div class="form-group">
+        <label for="StudentParentNo">Parent Phone Number:</label>
+        <input type="text" class="form-control" id="StudentParentNo" name="StudentParentNo"
+          value="{{ user['StudentParentNo'] }}" required>
+      </div>
+      <div class="form-group">
+        <label for="Class">Class Name:</label>
+        <select class="form-control" id="Class" name="Class">
+          {% for ClassName in ClassNames %}
+          {% if ClassName == user['ClassName'] %}
+          <option value="{{ ClassName }}" selected>{{ ClassName }}</option>
+          {% else %}
+          <option value="{{ ClassName }}">{{ ClassName }}</option>
+          {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Update Profile</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
