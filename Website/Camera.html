@@ -8,9 +8,9 @@
     <div class="camera-container">
       <video id="camera-stream" autoplay></video>
     </div>
+    <p class="text-muted">Press Q to stop the camera feed</p>
     <form method="POST" src="{{ url_for('camera') }}">
       <button type="submit" name="submit_button" value="Start" class="btn btn-primary mt-3">Start Camera</button>
-      <button type="submit" name="submit_button" value="Stop" class="btn btn-danger mt-3">Stop Camera</button>
     </form>
   </div>
 </div>
