@@ -1,4 +1,3 @@
-let canvas;
 let context;
 let paint;
 let clickX = [];
@@ -10,7 +9,7 @@ let color = "#000000"; // default pen color
 let size = 1; // default pen size
 
 function startCanvas() {
-    canvas = document.getElementById("canvas");
+    let canvas = document.getElementById("canvas");
     context = canvas.getContext("2d");
     context.strokeStyle = color;
     context.lineJoin = "round";
