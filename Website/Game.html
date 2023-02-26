@@ -5,13 +5,16 @@
 
 <div class="container my-5">
   <h3 class="header text-center">Game</h3>
-  <div class="d-flex justify-content-center mt-3">
-    <button id="start-btn" class="btn btn-outline-primary">Start</button>
-    <button id="stop-btn" class="btn btn-outline-danger">Stop</button>
-  </div>
-  <br />
   <canvas id="unity-canvas" width=960 height=600 style="width: 960px; height: 600px; background: #231F20"></canvas>
 </div>
+
+<div class="container my-5">
+  <form method="POST" action="{{ url_for('game') }}">
+    <input type="submit" name="start_game" value="Start GameTime">
+    <input type="submit" name="stop_game" value="Stop GameTime">
+  </form>
+</div>
+
 <script src="static/Build/WebGL.loader.js"></script>
 <script>
   if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -19,6 +22,7 @@
     meta.name = 'viewport';
     meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
     document.getElementsByTagName('head')[0].appendChild(meta);
+
     var canvas = document.querySelector("#unity-canvas");
     canvas.style.width = "100%";
     canvas.style.height = "100%";
@@ -27,45 +31,15 @@
     document.body.style.textAlign = "left";
   }
 
-  // Declare unityInstance variable outside the event listeners
-  let unityInstance;
-
-  // Get the start and stop buttons
-  const startBtn = document.getElementById("start-btn");
-  const stopBtn = document.getElementById("stop-btn");
-
-  // Add click event listener to the start button
-  startBtn.addEventListener("click", function () {
-    // Enable the stop button
-    stopBtn.disabled = false;
-    // Create the Unity instance if it does not exist
-    if (!unityInstance) {
-      unityInstance = createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "static/Build/WebGL.data.unityweb",
-        frameworkUrl: "static/Build/WebGL.framework.js.unityweb",
-        codeUrl: "static/Build/WebGL.wasm.unityweb",
-        streamingAssetsUrl: "static/StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Project_ASP",
-        productVersion: "1.0",
-      });
-
-      // Start the game
-      unityInstance.SendMessage("GameManager", "StartGame");
-    }
-  });
-
-  // Add click event listener to the stop button
-  stopBtn.addEventListener("click", function () {
-    // Disable the stop button
-    stopBtn.disabled = true;
-
-    // Stop the game
-    unityInstance.SendMessage("GameManager", "StopGame");
-
-    // Unload the Unity instance
-    unityInstance.Quit();
-    unityInstance = null;
+  createUnityInstance(document.querySelector("#unity-canvas"), {
+    dataUrl: "static/Build/WebGL.data.unityweb",
+    frameworkUrl: "static/Build/WebGL.framework.js.unityweb",
+    codeUrl: "static/Build/WebGL.wasm.unityweb",
+    streamingAssetsUrl: "static/StreamingAssets",
+    companyName: "DefaultCompany",
+    productName: "Project_ASP",
+    productVersion: "1.0",
   });
 </script>
+
 {% endblock %}
