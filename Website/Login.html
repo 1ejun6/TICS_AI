@@ -4,7 +4,7 @@
 <div class="container mt-5">
   <div class="card p-3">
     <h1 class="header text-center mb-3">Login</h1>
-    <form action="{{url_for('login')}}" method="POST">
+    <form id="login-form" action="{{url_for('login')}}" method="POST">
       <div class="form-group">
         <label for="StudentName">Name:</label>
         <input type="text" id="StudentName" name="StudentName" class="form-control" required>
@@ -16,6 +16,14 @@
           <option value="{{ class.ClassID }}">{{ class.ClassName }}</option>
           {% endfor %}
         </select>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="ConsentCheck" name="ConsentCheck" required>
+        <label class="form-check-label small text-muted" for="ConsentCheck">
+          By checking this box, I hereby give my informed consent for the capture and processing of my facial
+          information,
+          and understand that my face may be recorded and analyzed as part of the login process for this application.
+        </label>
       </div>
       <button type="submit" class="btn btn-primary btn-block">Submit</button>
     </form>
